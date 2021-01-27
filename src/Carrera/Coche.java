@@ -1,9 +1,10 @@
 package Carrera;
 /*
  * 
- * @author Javier legua
+ * @author Javier Legua
  * 
  */
 public class Coche {
-
+	
+	private String piloto;
 }
