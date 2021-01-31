@@ -108,7 +108,7 @@ public class Coche {
 				
 				velocidad += aceleracion;
 				
-				if (velocidad>200) {
+				if (velocidad > 200) {
 					this.setVelocidad(0);
 					this.setEstado("Accidentado");
 					System.out.println("Te has pasado de velocidad y te la has pegado.");
@@ -121,9 +121,38 @@ public class Coche {
 					System.out.println("Has terminado la carrera.");
 				}else {
 					System.out.println("Te faltan " + (this.getDISTANCIACARRERA() - this.getDistanciaRecorrida()) + " kms para terminar la carrera.");
+					return;
 				}
-				if (this.getEstado().equalsIgnoreCase("Terminado")) {
+			}
+		}
+	}
+	
+public void frenar() {
+		
+		if ((this.getEstado().equalsIgnoreCase("Parado"))||(this.getEstado().equals("Accidentado"))) {
+			System.out.println("Para frenar primero tienes que arrancar el coche.");
+		}else {
+			if (this.getEstado().equalsIgnoreCase("Marcha")) {
+				double r = Math.random()*this.POTENCIA+1;
+				int frenada = (int)Math.floor(r);
+				int velocidad = this.getVelocidad();
+				int kms = this.getDistanciaRecorrida();
+				
+				velocidad -= frenada;
+				
+				if (velocidad < 0) {
+					this.setVelocidad(0);
+					this.setEstado("Estas parado.");
+					System.out.println("Tu velocidad es de " + this.getVelocidad());
+				}else {
+					this.setVelocidad(velocidad);
+					this.setDistanciaRecorrida(kms+velocidad);
+					System.out.println("Vas a " + this.getVelocidad() + " km/h");
+				}
+				if (this.distanciaRecorrida >= this.DISTANCIACARRERA) {
 					System.out.println("Has terminado la carrera.");
+				}else {
+					System.out.println("Te faltan " + (this.getDISTANCIACARRERA() - this.getDistanciaRecorrida()) + " kms para terminar la carrera.");
 					return;
 				}
 			}
