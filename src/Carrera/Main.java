@@ -8,34 +8,18 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static int pintaMenu() {
-
-		int opc = 0;
-
-		Scanner leer = new Scanner(System.in);
-
-		do {
-			System.out.println("--Gestión Carrera--");
-			System.out.println("Pulsa 1 para arrancar el coche.");
-			System.out.println("Pulsa 2 para acelerar to fast and furious");
-			System.out.println("Pulsa 3 para hacer un derrape to guapo");
-			System.out.println("Pulsa 4 para re-arrancar porque te has flipado acelerando");
-			opc = leer.nextInt();
-			
-		} while (opc < 1 || opc > 4);
-
-		return opc;
-	}
+	
 
 	public static void main(String[] args) {
 
 		int opc = 0;
 
-		Coche c = new Coche("Dominic Toretto", 1327);
+		Coche c = new Coche("Dominic Toretto", 1327, 300,true);
 
 		do {
-			opc = pintaMenu();
-
+			opc = Menu.pintaMenu();
+			System.out.println(c.toString());
+			
 			switch (opc) {
 			case 1: {
 				c.arrancar();
@@ -54,7 +38,7 @@ public class Main {
 				break;
 			}
 			}
-		} while (c.getDistanciaRecorrida() <= c.getDISTANCIACARRERA());
+		} while (!c.getEstado().equalsIgnoreCase("Terminado"));
 
 	}
 
