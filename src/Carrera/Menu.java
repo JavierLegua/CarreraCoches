@@ -12,51 +12,50 @@ public class Menu {
 
 		do {
 			System.out.println("--Gestión Carrera--");
-			System.out.println("Pulsa 1 para arrancar el coche.");
-			System.out.println("Pulsa 2 para acelerar to fast and furious");
-			System.out.println("Pulsa 3 para hacer un derrape to guapo");
-			System.out.println("Pulsa 4 para re-arrancar porque te has flipado acelerando");
+			System.out.println("Pulsa 1 para acelerar to fast and furious");
+			System.out.println("Pulsa 2 para hacer un derrape to guapo");
+			System.out.println("Pulsa 3 para re-arrancar porque te has flipado acelerando");
 			opc = leer.nextInt();
-			
-		} while (opc < 1 || opc > 4);
+
+		} while (opc < 1 || opc > 3);
 
 		return opc;
 	}
-	
-public void menuCarrera(){
-		
+
+	public void menuCarrera() {
+
 		System.out.println("--MENU CARRERA--");
 		int opc = 0;
 		boolean comiezo = false;
 		Scanner leer = new Scanner(System.in);
-		
+
 		do {
-			
+
 			boolean posVector = false;
-			
+
 			for (Coche coche : Carrera.vCoches) {
 				if (coche == null) {
 					posVector = true;
 					break;
 				}
 			}
-			
+
 			if (posVector == false) {
 				System.out.println("La carrera está llena de pilotos.");
 				opc = 2;
-			}else {
+			} else {
 				System.out.println("Si quieres añadir un bolido pulsa 1 y si quieres empezar la carrera pulsa 2.");
 				opc = leer.nextInt();
 			}
 			if (opc < 1 || opc > 2) {
 				System.out.println("No es valida la opción elegida.");
 			}
-			
+
 			switch (opc) {
 			case 1:
-				//Carrera.añadirCoche();
+				// Carrera.añadirCoche();
 				break;
-			case 2: 
+			case 2:
 				comiezo = false;
 				for (Coche coche : Carrera.vCoches) {
 					if (coche != null) {
@@ -65,10 +64,10 @@ public void menuCarrera(){
 					}
 				}
 				if (comiezo) {
-					//Carrera.comiezoCarrera();
+					// Carrera.comiezoCarrera();
 				}
 				break;
 			}
-		}while (opc < 1 || opc > 2);
+		} while (opc < 1 || opc > 2);
 	}
 }

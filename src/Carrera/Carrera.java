@@ -37,9 +37,24 @@ public class Carrera {
 		this.vCoches = vCoches;
 	}
 	
+	public boolean reArrancar() {
+		
+		for (Coche coche : vCoches) {
+			if (coche != null && coche.getEstado().equalsIgnoreCase("Terminado")) {
+			return false;
+			}
+		}
+		return true;
+	}
 	
-	
-	
-	
+	public boolean comprobarCarreraTerminada() {
+		
+		for (Coche coche : vCoches) {
+			if (coche != null && coche.getEstado().equalsIgnoreCase("Marcha")) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 }
