@@ -1,9 +1,11 @@
 package Carrera;
 
+import java.util.Scanner;
+
 public class Carrera {
 	private String nombre;
 	private int distanciaCarrera;
-	private Coche vCoches[];
+	public static Coche vCoches[];
 	
 	public Carrera(String nombre, int distanciaCarrera, Coche[] vCoches) {
 		this.nombre = nombre;
