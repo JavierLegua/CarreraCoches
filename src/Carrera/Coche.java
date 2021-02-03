@@ -1,5 +1,4 @@
 package Carrera;
-
 /*
  * 
  * @author Javier Legua
@@ -36,6 +35,10 @@ public class Coche {
 
 	public int getDorsal() {
 		return dorsal;
+	}
+	
+	public boolean isHumano() {
+		return humano;
 	}
 
 	public void setDorsal(int dorsal) {
