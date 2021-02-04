@@ -61,6 +61,7 @@ public class Main {
 								}
 								
 							}
+							carrera.podium();
 						}
 					}
 

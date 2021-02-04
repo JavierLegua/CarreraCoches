@@ -10,13 +10,13 @@ public class Carrera {
 	private String nombre;
 	private int distanciaCarrera;
 	private Coche vCoches[];
-	private int podium[];
+	private Coche podium[];
 
 	public Carrera(String nombre, int distanciaCarrera) {
 		this.nombre = nombre;
 		this.distanciaCarrera = distanciaCarrera;
 		this.vCoches = new Coche[10];
-		this.podium = new int[10];
+		this.podium = new Coche[10];
 	}
 
 	public String getNombre() {
@@ -85,7 +85,7 @@ public class Carrera {
 		for (int i = 0; i < vCoches.length; i++) {
 			if (vCoches[i] == null) {
 				System.out.println("Dime el nombre del piloto.");
-				nombre = leer.next();
+				nombre = leer.nextLine();
 				do {
 					System.out.println("Dime el dorsal del piloto.");
 					dorsal = leer.nextInt();
@@ -117,9 +117,10 @@ public class Carrera {
 	}
 	
 	public void podium() {
-		for (int i = 0; i < vCoches.length; i++) {
-			if (vCoches[i].getEstado().equalsIgnoreCase("Terminado")) {
-				podium[i];
+		for (Coche coche : vCoches) {
+			if (coche != null && coche.getEstado().equalsIgnoreCase("Terminado")) {
+				System.out.println(coche);
+				break;
 			}
 		}
 	}
