@@ -5,56 +5,92 @@ package Carrera;
  * 
  */
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
-
-	public static int pintaMenu() {
-
-		int opc = 0;
-
-		Scanner leer = new Scanner(System.in);
-
-		do {
-			System.out.println("--Gestión Carrera--");
-			System.out.println("Pulsa 1 para arrancar el coche.");
-			System.out.println("Pulsa 2 para acelerar to fast and furious");
-			System.out.println("Pulsa 3 para hacer un derrape to guapo");
-			System.out.println("Pulsa 4 para re-arrancar porque te has flipado acelerando");
-			opc = leer.nextInt();
-			
-		} while (opc < 1 || opc > 4);
-
-		return opc;
-	}
 
 	public static void main(String[] args) {
 
 		int opc = 0;
+		boolean salir = false;
 
-		Coche c = new Coche("Dominic Toretto", 1327);
+		Carrera carrera = null;
+		Coche c = null;
 
 		do {
-			opc = pintaMenu();
-
+			opc = Menu.menuCarrera();
 			switch (opc) {
-			case 1: {
-				c.arrancar();
+			case 1:
+				// Empezamos carrera
+				carrera.empezarCarrera();
+				do {
+					
+					for (int i = 0; i < carrera.getvCoches().length; i++) {
+						if (carrera.getvCoches()[i] != null) {
+							c = carrera.getvCoches()[i];
+							if (c.isHumano() && !(c.getEstado().equalsIgnoreCase("Terminado"))) {
+								opc = Menu.pintaMenu();
+								System.out.println(c.toString());
+								//Juega humano
+								switch (opc) {
+								case 1: {
+									c.acelerar();
+									break;
+								}
+								case 2: {
+									c.frenar();
+									break;
+								}
+								case 3: {
+									c.rearrancar();
+									break;
+								}
+								}
+							} else {
+								//Juega la maquina
+								Random r = new Random();
+								switch (r.nextInt(2)) {
+								case 0: {
+									c.acelerar();
+									break;
+								}
+								case 1: {
+									c.frenar();
+									break;
+								}
+								}
+								
+							}
+						}
+					}
+
+				} while (!carrera.comprobarCarreraTerminada());
+				System.out.println("Carrera terminada");
+				System.out.println();
+				carrera.ganador();
+				salir = true;
+				break;
+			case 2:
+				carrera.añadirCoche();
+				break;
+			case 3:
+				String nombre = "";
+				int distancia = 0;
+				Scanner leer = new Scanner(System.in);
+				
+				System.out.println("Dime el nombre de la carrera.");
+				nombre = leer.nextLine();
+				System.out.println("Dime la distancia de la carrera.");
+				distancia = leer.nextInt();
+				
+				carrera = new Carrera(nombre, distancia);
+				break;
+			case 4:
+				salir = true;
 				break;
 			}
-			case 2: {
-				c.acelerar();
-				break;
-			}
-			case 3: {
-				c.frenar();
-				break;
-			}
-			case 4: {
-				c.rearrancar();
-				break;
-			}
-			}
-		} while (c.getDistanciaRecorrida() <= c.getDISTANCIACARRERA());
+
+		} while (!salir);
 
 	}
 
