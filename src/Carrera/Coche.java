@@ -154,8 +154,8 @@ public class Coche {
 
 	@Override
 	public String toString() {
-		return "nombre=" + nomPiloto + ", dorsal=" + dorsal + ", estado=" + estado + ", velocidad=" + velocidad
-				+ ", distanciaRecorrida=" + distanciaRecorrida;
+		return "Nombre del Piloto:" + nomPiloto + " Dorsal Nº" + dorsal +" "+ velocidad + "km/h " 
+				+ distanciaRecorrida + " kms recorridos";
 	}
 
 }

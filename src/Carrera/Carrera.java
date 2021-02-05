@@ -10,13 +10,11 @@ public class Carrera {
 	private String nombre;
 	private int distanciaCarrera;
 	private Coche vCoches[];
-	private Coche podium[];
 
 	public Carrera(String nombre, int distanciaCarrera) {
 		this.nombre = nombre;
 		this.distanciaCarrera = distanciaCarrera;
 		this.vCoches = new Coche[10];
-		this.podium = new Coche[10];
 	}
 
 	public String getNombre() {
@@ -116,9 +114,10 @@ public class Carrera {
 		}
 	}
 	
-	public void podium() {
+	public void ganador() {
 		for (Coche coche : vCoches) {
 			if (coche != null && coche.getEstado().equalsIgnoreCase("Terminado")) {
+				System.out.println("El ganador es:");
 				System.out.println(coche);
 				break;
 			}

@@ -24,11 +24,11 @@ public class Main {
 				// Empezamos carrera
 				carrera.empezarCarrera();
 				do {
-
+					
 					for (int i = 0; i < carrera.getvCoches().length; i++) {
 						if (carrera.getvCoches()[i] != null) {
 							c = carrera.getvCoches()[i];
-							if (c.isHumano()) {
+							if (c.isHumano() && !(c.getEstado().equalsIgnoreCase("Terminado"))) {
 								opc = Menu.pintaMenu();
 								System.out.println(c.toString());
 								//Juega humano
@@ -61,11 +61,14 @@ public class Main {
 								}
 								
 							}
-							carrera.podium();
 						}
 					}
 
 				} while (!carrera.comprobarCarreraTerminada());
+				System.out.println("Carrera terminada");
+				System.out.println();
+				carrera.ganador();
+				salir = true;
 				break;
 			case 2:
 				carrera.añadirCoche();
